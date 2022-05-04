@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1042573643386",
+    "project_id": "gestion-des-films",
+    "storage_bucket": "gestion-des-films.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1042573643386:android:0895c49570a6abecee35c3",
+        "android_client_info": {
+          "package_name": "com.example.application_gestion_films"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1042573643386-ktt3hffrrjt78r72hufg2uab6kljlu6o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAaqAZ7u7ocZJT-OaOEomiYFt4ikJglXgc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1042573643386-ktt3hffrrjt78r72hufg2uab6kljlu6o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
