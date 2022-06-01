@@ -42,7 +42,6 @@ class LoginActivity : AppCompatActivity() {
                     Toast.makeText(this, "Connecté avec succès !", Toast.LENGTH_SHORT).show()
                     startActivity(intent)
                     finish()
-                    startActivity(intent2)
                 }
             }.addOnFailureListener { exception ->
                 Toast.makeText(this, "Email ou mot de passe incorrect", Toast.LENGTH_SHORT).show()
