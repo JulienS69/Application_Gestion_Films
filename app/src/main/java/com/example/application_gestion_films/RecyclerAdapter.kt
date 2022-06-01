@@ -12,19 +12,14 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.application_gestion_films.model.Film
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.ktx.Firebase
-
-import org.w3c.dom.Text
 
 
 class RecyclerAdapter : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
 
     var listFilms: List<Film> = listOf()
-    private var details = arrayOf("tddddddddddddddddddd", "aaaaaaaaaaaaaaaa", "bbbbbbbbb")
 
     private val images = intArrayOf(R.drawable.ic_easter_egg,R.drawable.ic_easter_egg,R.drawable.ic_easter_egg )
-    private var firestore: FirebaseFirestore = FirebaseFirestore.getInstance()
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerAdapter.ViewHolder {
 
@@ -40,7 +35,8 @@ return listFilms.size
 
         holder.itemTitle.text = listFilms[position].name
         holder.itemDetail.text = listFilms[position].synopsis
-        holder.itemImage.setImageResource(images[position])
+       /* holder.itemImage.setImageResource(images[position])*/
+        holder.itemDate.text = listFilms[position].release_date
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -48,11 +44,13 @@ return listFilms.size
         var itemImage: ImageView
         var itemTitle: TextView
         var itemDetail: TextView
+        var itemDate: TextView
 
         init {
             itemImage = itemView.findViewById(R.id.item_image)
             itemTitle = itemView.findViewById(R.id.item_title)
             itemDetail = itemView.findViewById(R.id.item_detail)
+            itemDate = itemView.findViewById(R.id.item_date)
 
             itemView.setOnClickListener {
                 val position: Int = adapterPosition

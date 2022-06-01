@@ -2,9 +2,9 @@
     <!-- Base application theme. -->
     <style name="Theme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimaryDark">@color/white</item>
+        <item name="colorAccent">@color/white</item>
 
         <!-- background -->
         <item name="android:windowBackground">@color/background_gray</item>
@@ -13,9 +13,9 @@
         <!-- Customize your theme here. -->
         <!-- This code is for changing the color of the bar. -->
         <!-- Type your colour code which you want to set in colorPrimary item -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimaryDark">@color/white</item>
+        <item name="colorAccent">@color/white</item>
     </style>
     <!-- Toolbar Theme -->
     <style name="ToolbarTheme" parent="@style/ThemeOverlay.AppCompat">

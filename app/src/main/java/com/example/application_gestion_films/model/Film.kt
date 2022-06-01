@@ -1,7 +1,7 @@
 package com.example.application_gestion_films.model
 
 class Film
-    (val director : String = "", var name : String = "", val poster_url : String = "", release_date: String ="", var synopsis : String = "",)
+    (var name : String = "", var release_date: String ="", var synopsis : String = "",)
 
 interface OnGetDatabase {
     fun getFilm(film: Film)

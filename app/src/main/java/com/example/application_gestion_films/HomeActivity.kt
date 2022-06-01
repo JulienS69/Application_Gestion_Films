@@ -51,8 +51,10 @@ class HomeActivity : AppCompatActivity(), OnGetDatabase {
                    val film = Film()
                   val name =  it.data["name"].toString()
                    val synopsis =  it.data["synopsis"].toString()
+                   val release_date = it.data["release_date"].toString()
                    film.name = name
                    film.synopsis = synopsis
+                   film.release_date = release_date
                    listFilms.add(film)
 
                }
