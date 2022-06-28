@@ -52,13 +52,17 @@ class HomeActivity : AppCompatActivity(), OnGetDatabase {
                   val name =  it.data["name"].toString()
                    val synopsis =  it.data["synopsis"].toString()
                    val release_date = it.data["release_date"].toString()
+                   val poster_url = it.data["poster_url"].toString()
                    film.name = name
                    film.synopsis = synopsis
                    film.release_date = release_date
+                   film.poster_url = poster_url
                    listFilms.add(film)
 
                }
                 adapter?.listFilms = listFilms
+                //Permet de recharger la page lorsque la liste est faite
+                adapter?.notifyDataSetChanged()
             }
             .addOnFailureListener { exception ->
                 Log.w(ContentValues.TAG, "Error getting documents.", exception)

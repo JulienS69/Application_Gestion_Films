@@ -12,6 +12,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.application_gestion_films.model.Film
+import com.squareup.picasso.Picasso
 
 
 class RecyclerAdapter : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
@@ -28,6 +29,8 @@ class RecyclerAdapter : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
         return ViewHolder(v)
     }
 
+
+
     override fun getItemCount(): Int {
 return listFilms.size
     }
@@ -35,11 +38,15 @@ return listFilms.size
 
         holder.itemTitle.text = listFilms[position].name
         holder.itemDetail.text = listFilms[position].synopsis
-       /* holder.itemImage.setImageResource(images[position])*/
+        Picasso.get().load(listFilms[position].poster_url).into(holder.itemImage)
         holder.itemDate.text = listFilms[position].release_date
+
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+
+
 
         var itemImage: ImageView
         var itemTitle: TextView
@@ -57,12 +64,13 @@ return listFilms.size
 
                 Toast.makeText(
                     itemView.context,
-                    "you clicked on ${listFilms[position].name}",
+                    "Tu as cliqué sur le film ${listFilms[position].name}",
                     Toast.LENGTH_LONG
                 ).show()
             }
         }
 
     }
+
 }
 
