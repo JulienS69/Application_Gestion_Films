@@ -1,19 +1,14 @@
 package com.example.application_gestion_films
 
 import android.content.ContentValues
-import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.util.Log
-import android.view.View
-import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.application_gestion_films.model.Database
 import com.example.application_gestion_films.model.Film
 import com.example.application_gestion_films.model.OnGetDatabase
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.ktx.Firebase
 
 
 class HomeActivity : AppCompatActivity(), OnGetDatabase {
@@ -27,12 +22,9 @@ class HomeActivity : AppCompatActivity(), OnGetDatabase {
     private var arrayList:ArrayList<ItemList> = ArrayList()*/
     private var layoutManager: RecyclerView.LayoutManager? = null
     private var adapter: RecyclerAdapter? = null
-    val database = Database()
-    /*database.listener*/
 
 
     private var firestore: FirebaseFirestore = FirebaseFirestore.getInstance()
-    var listItem:ArrayList<ItemList> = ArrayList()
     private var listFilms = mutableListOf<Film>()
 
     override fun onCreate(savedInstanceState: Bundle?) {

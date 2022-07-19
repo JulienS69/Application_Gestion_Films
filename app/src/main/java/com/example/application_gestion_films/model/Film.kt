@@ -14,5 +14,4 @@ class Database {
         listener?.getFilm(Film("", ""))
     }
 
-
 }

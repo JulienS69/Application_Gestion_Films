@@ -18,10 +18,8 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         auth = Firebase.auth
-        val email = findViewById<EditText>(R.id.login_email)
-        val btn_login = findViewById<Button>(R.id.btn_login)
-        btn_login.setOnClickListener { login(it) }
-
+        val btnlogin = findViewById<Button>(R.id.btn_login)
+        btnlogin.setOnClickListener { login(it) }
     }
 
     private fun login(view: View){
@@ -38,7 +36,6 @@ class LoginActivity : AppCompatActivity() {
             auth.signInWithEmailAndPassword(email, password).addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     val intent = Intent(this, HomeActivity::class.java)
-                    val intent2 = Intent(this, EasterEggActivity::class.java)
                     Toast.makeText(this, "Connecté avec succès !", Toast.LENGTH_SHORT).show()
                     startActivity(intent)
                     finish()

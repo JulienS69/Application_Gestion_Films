@@ -1,9 +1,5 @@
 package com.example.application_gestion_films
 
-import android.R.attr.data
-import android.content.ContentValues
-import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,20 +15,17 @@ class RecyclerAdapter : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
 
     var listFilms: List<Film> = listOf()
 
-    private val images = intArrayOf(R.drawable.ic_easter_egg,R.drawable.ic_easter_egg,R.drawable.ic_easter_egg )
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerAdapter.ViewHolder {
-
+        
         val v = LayoutInflater.from(parent.context).inflate(R.layout.car_view_item_layout_list, parent, false)
-
         return ViewHolder(v)
     }
 
 
 
     override fun getItemCount(): Int {
-return listFilms.size
+        return listFilms.size
     }
     override fun onBindViewHolder(holder: RecyclerAdapter.ViewHolder, position: Int) {
 
@@ -44,9 +37,6 @@ return listFilms.size
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
-
-
 
         var itemImage: ImageView
         var itemTitle: TextView
