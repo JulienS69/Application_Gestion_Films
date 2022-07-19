@@ -11,6 +11,7 @@
         android:theme="@style/Theme.Material3.DynamicColors.Light">
         <activity
             android:name=".DetailMovieActivity"
+            android:label="Détail du film"
             android:exported="false" />
         <activity
             android:name=".HomeActivity"
@@ -18,7 +19,7 @@
         <activity
             android:name=".LoginActivity"
             android:exported="false"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".EasterEggActivity"
             android:exported="true"
