@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+
+    android:layout_height="match_parent"
+    android:layout_marginBottom="25dp"
+    android:layout_marginTop="25dp"
+    android:layout_marginRight="15dp"
+    android:layout_marginLeft="15dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="5dp"
+    app:cardPreventCornerOverlap="true"
+    app:cardUseCompatPadding="true"
+    tools:context=".DetailMovieActivity">
+
+    <TextView
+        android:id="@+id/item_dateDetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="8dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:text="Date"
+        android:textAlignment="center"
+        android:textStyle="italic"
+        tools:ignore="RtlSymmetry" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="35dp"
+        android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/item_imageDetail"
+            android:layout_width="200dp"
+            android:layout_height="250dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="25dp"
+            android:layout_marginStart="85dp" />
+
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/item_titleDetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="350dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:paddingTop="5dp"
+        android:text="Title Text"
+        android:textSize="12sp"
+        android:textAlignment="center"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/item_detailDetail"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="400dp"
+        android:paddingLeft="2dp"
+        android:paddingTop="15dp"
+        android:paddingRight="2dp"
+        android:textAlignment="center"
+        android:text="Detail Text" />
+
+</androidx.cardview.widget.CardView>

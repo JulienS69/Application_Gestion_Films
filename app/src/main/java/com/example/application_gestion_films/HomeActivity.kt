@@ -1,31 +1,31 @@
 package com.example.application_gestion_films
 
 import android.content.ContentValues
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.application_gestion_films.model.Film
 import com.example.application_gestion_films.model.OnGetDatabase
 import com.google.firebase.firestore.FirebaseFirestore
+import java.text.FieldPosition
 
 
-class HomeActivity : AppCompatActivity(), OnGetDatabase {
+class HomeActivity : AppCompatActivity(), OnGetDatabase, RecyclerAdapter.IONClickItem {
 
     override fun getFilm(film: Film) {
-        TODO("Not yet implemented")
+
     }
 
-/*    private var listView:RecyclerView ?= null
-    private var itemAdapters:ItemAdapters ?=null
-    private var arrayList:ArrayList<ItemList> = ArrayList()*/
     private var layoutManager: RecyclerView.LayoutManager? = null
     private var adapter: RecyclerAdapter? = null
-
-
     private var firestore: FirebaseFirestore = FirebaseFirestore.getInstance()
     private var listFilms = mutableListOf<Film>()
+    private var id :String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,16 +41,17 @@ class HomeActivity : AppCompatActivity(), OnGetDatabase {
                     result ->
                result.forEach {
                    val film = Film()
+                   id =  it.id
                   val name =  it.data["name"].toString()
-                   val synopsis =  it.data["synopsis"].toString()
-                   val release_date = it.data["release_date"].toString()
-                   val poster_url = it.data["poster_url"].toString()
+                  val  synopsis =  it.data["synopsis"].toString()
+                  val  release_date = it.data["release_date"].toString()
+                  val  poster_url = it.data["poster_url"].toString()
+                   film.id = id
                    film.name = name
                    film.synopsis = synopsis
                    film.release_date = release_date
                    film.poster_url = poster_url
                    listFilms.add(film)
-
                }
                 adapter?.listFilms = listFilms
                 //Permet de recharger la page lorsque la liste est faite
@@ -60,9 +61,19 @@ class HomeActivity : AppCompatActivity(), OnGetDatabase {
                 Log.w(ContentValues.TAG, "Error getting documents.", exception)
             }
 
+
         adapter = RecyclerAdapter()
         recyclerView.adapter = adapter
 
+        (recyclerView.adapter as RecyclerAdapter).listener = this
+
+
+    }
+
+    override fun onClick(id: String) {
+        val intent = Intent(this, DetailMovieActivity::class.java)
+        intent.putExtra("ID", id)
+        startActivity(intent)
     }
 
 

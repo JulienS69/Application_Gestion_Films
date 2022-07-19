@@ -1,11 +1,13 @@
 package com.example.application_gestion_films
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+
 import androidx.recyclerview.widget.RecyclerView
 import com.example.application_gestion_films.model.Film
 import com.squareup.picasso.Picasso
@@ -14,49 +16,41 @@ import com.squareup.picasso.Picasso
 class RecyclerAdapter : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
 
     var listFilms: List<Film> = listOf()
-
+    var listener: IONClickItem? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerAdapter.ViewHolder {
-        
-        val v = LayoutInflater.from(parent.context).inflate(R.layout.car_view_item_layout_list, parent, false)
-        return ViewHolder(v)
+        val v = LayoutInflater.from(parent.context)
+            .inflate(R.layout.car_view_item_layout_list, parent, false)
+        return ViewHolder(v, listener)
     }
-
-
 
     override fun getItemCount(): Int {
         return listFilms.size
     }
+
     override fun onBindViewHolder(holder: RecyclerAdapter.ViewHolder, position: Int) {
-
-        holder.itemTitle.text = listFilms[position].name
-        holder.itemDetail.text = listFilms[position].synopsis
-        Picasso.get().load(listFilms[position].poster_url).into(holder.itemImage)
-        holder.itemDate.text = listFilms[position].release_date
-
+        holder.update(listFilms[position])
     }
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    interface IONClickItem {
+        fun onClick(id: String)
+    }
 
-        var itemImage: ImageView
-        var itemTitle: TextView
-        var itemDetail: TextView
-        var itemDate: TextView
 
-        init {
-            itemImage = itemView.findViewById(R.id.item_image)
-            itemTitle = itemView.findViewById(R.id.item_title)
-            itemDetail = itemView.findViewById(R.id.item_detail)
-            itemDate = itemView.findViewById(R.id.item_date)
+    inner class ViewHolder(itemView: View, listener: IONClickItem?) :
+        RecyclerView.ViewHolder(itemView) {
 
+        fun update(film: Film) {
+            val itemImage: ImageView = itemView.findViewById(R.id.item_image)
+            val itemTitle: TextView = itemView.findViewById(R.id.item_title)
+            val itemDetail: TextView = itemView.findViewById(R.id.item_detail)
+            val itemDate: TextView = itemView.findViewById(R.id.item_date)
+            itemTitle.text = film.name
+            itemDetail.text = film.synopsis
+            itemDate.text = film.release_date
+            Picasso.get().load(film.poster_url).into(itemImage)
             itemView.setOnClickListener {
-                val position: Int = adapterPosition
-
-                Toast.makeText(
-                    itemView.context,
-                    "Tu as cliqué sur le film ${listFilms[position].name}",
-                    Toast.LENGTH_LONG
-                ).show()
+                listener?.onClick(film.id)
             }
         }
 
