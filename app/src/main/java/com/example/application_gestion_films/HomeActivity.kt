@@ -2,9 +2,12 @@ package com.example.application_gestion_films
 
 import android.content.ContentValues
 import android.content.Intent
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.CheckBox
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -26,6 +29,7 @@ class HomeActivity : AppCompatActivity(), OnGetDatabase, RecyclerAdapter.IONClic
     private var firestore: FirebaseFirestore = FirebaseFirestore.getInstance()
     private var listFilms = mutableListOf<Film>()
     private var id :String = ""
+    private lateinit var imageView: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +37,6 @@ class HomeActivity : AppCompatActivity(), OnGetDatabase, RecyclerAdapter.IONClic
         layoutManager = LinearLayoutManager(this)
         val recyclerView:  RecyclerView = findViewById(R.id.recyclerView)
         recyclerView.layoutManager = layoutManager
-
         // Récupération de la liste de film et ajout de la liste récupérer dans la liste de film du RecyclerAdapter.
         firestore.collection("film")
             .get()
@@ -42,15 +45,12 @@ class HomeActivity : AppCompatActivity(), OnGetDatabase, RecyclerAdapter.IONClic
                result.forEach {
                    val film = Film()
                    id =  it.id
-                  val name =  it.data["name"].toString()
-                  val  synopsis =  it.data["synopsis"].toString()
-                  val  release_date = it.data["release_date"].toString()
-                  val  poster_url = it.data["poster_url"].toString()
                    film.id = id
-                   film.name = name
-                   film.synopsis = synopsis
-                   film.release_date = release_date
-                   film.poster_url = poster_url
+                   film.name = it.data["name"].toString()
+                   film.is_read= it.data["is_read"] as Boolean
+                   film.synopsis = it.data["synopsis"].toString()
+                   film.release_date = it.data["release_date"].toString()
+                   film.poster_url = it.data["poster_url"].toString()
                    listFilms.add(film)
                }
                 adapter?.listFilms = listFilms
@@ -70,39 +70,12 @@ class HomeActivity : AppCompatActivity(), OnGetDatabase, RecyclerAdapter.IONClic
 
     }
 
+
     override fun onClick(id: String) {
         val intent = Intent(this, DetailMovieActivity::class.java)
         intent.putExtra("ID", id)
         startActivity(intent)
     }
-
-
-    // Création des film (Cela évite de créer plusieurs ligne dans la bdd à la main)
-
-/*    private fun createFilm(){
-        findViewById<Button>(R.id.button).setOnClickListener {
-            // Creation d'un nouveau film
-            val film = hashMapOf(
-                "director" to "",
-                "name" to "",
-                "poster_url" to "",
-                "release_date" to "",
-                "synopsis" to "",
-            )
-
-
-            firestore.collection("film")
-                .add(film)
-                .addOnSuccessListener { documentReference ->
-                    Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
-                }
-                .addOnFailureListener { e ->
-                    Log.w(TAG, "Error adding document", e)
-                }
-
-        }
-        return Toast.makeText(applicationContext, "good job", Toast.LENGTH_LONG).show()
-    }*/
 
 
 }

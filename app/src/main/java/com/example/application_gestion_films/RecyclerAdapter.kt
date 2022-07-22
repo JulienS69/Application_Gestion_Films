@@ -45,12 +45,29 @@ class RecyclerAdapter : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
             val itemTitle: TextView = itemView.findViewById(R.id.item_title)
             val itemDetail: TextView = itemView.findViewById(R.id.item_detail)
             val itemDate: TextView = itemView.findViewById(R.id.item_date)
+            val isRead : ImageView = itemView.findViewById(R.id.is_read)
+            val isReadText : TextView = itemView.findViewById(R.id.is_read_text_view)
+            isRead.design(film.is_read)
+            isReadText.design(film.is_read)
             itemTitle.text = film.name
             itemDetail.text = film.synopsis
             itemDate.text = film.release_date
             Picasso.get().load(film.poster_url).into(itemImage)
             itemView.setOnClickListener {
                 listener?.onClick(film.id)
+            }
+
+        }
+
+
+        fun TextView.design(test: Boolean){
+            if(test){
+                setText(R.string.is_read_text)
+            }
+        }
+        fun ImageView.design(test :Boolean){
+            if(test){
+                setImageDrawable(getResources().getDrawable(R.drawable.ic_easter_egg))
             }
         }
 

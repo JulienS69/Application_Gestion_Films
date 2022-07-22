@@ -3,7 +3,7 @@ package com.example.application_gestion_films
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
+import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -15,6 +15,7 @@ class DetailMovieActivity : AppCompatActivity() {
     private lateinit var itemTitleDetail: TextView
     private lateinit var itemDetailDetail: TextView
     private lateinit var itemDateDetail: TextView
+    private lateinit var itemCheckBox: CheckBox
     private var id :String = ""
     private var firestore: FirebaseFirestore = FirebaseFirestore.getInstance()
 
@@ -29,11 +30,13 @@ class DetailMovieActivity : AppCompatActivity() {
                     result ->
                 val film = result.getResult()
                 itemTitleDetail.text =  film.get("name").toString()
+                itemCheckBox.isChecked = film.get("is_read") as Boolean
                 Picasso.get().load(film.get("poster_url").toString()).into(itemImageDetail)
                 itemDetailDetail.text =  film.get("synopsis").toString()
                 itemDateDetail.text =  film.get("release_date").toString()
 
             }
+        itemCheckBox = findViewById(R.id.checkBoxDetail)
         itemImageDetail = findViewById(R.id.item_imageDetail)
         itemTitleDetail = findViewById(R.id.item_titleDetail)
         itemDetailDetail =  findViewById(R.id.item_detailDetail)
@@ -42,13 +45,28 @@ class DetailMovieActivity : AppCompatActivity() {
         itemDetailDetail.text = intent.getStringExtra("Synopsys")
         itemDateDetail.text =  intent.getStringExtra("Date")
         Picasso.get().load(intent.getStringExtra("Image")).into(itemImageDetail)
-        gestionClic()
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        updateCheckbox()
     }
 
-    private fun gestionClic() {
-        (findViewById<View>(R.id.backDetail) as Button).setOnClickListener { v: View? ->
-            val i = Intent(this, HomeActivity::class.java)
-            startActivity(i)
+
+
+    private fun updateCheckbox() {
+        (findViewById<View>(R.id.checkBoxDetail) as CheckBox).setOnClickListener {
+            if(itemCheckBox.isChecked){
+                id =  intent.getStringExtra("ID").toString()
+                firestore.collection("film").document(id).update("is_read", true)
+            }else{
+                id =  intent.getStringExtra("ID").toString()
+                firestore.collection("film").document(id).update("is_read", false)
+            }
         }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        val intent2 = Intent(this, HomeActivity::class.java)
+        onBackPressed()
+        startActivity(intent2)
+        return true
     }
 }

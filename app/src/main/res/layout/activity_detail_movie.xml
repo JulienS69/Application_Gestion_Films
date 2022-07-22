@@ -43,14 +43,9 @@
                 android:layout_marginTop="25dp" />
         </LinearLayout>
 
-
-
-
-
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:paddingTop="45dp"
         android:layout_marginTop="340dp"
         android:layout_centerVertical="true"
         android:background="@color/button_add">
@@ -60,12 +55,12 @@
         <TextView
             android:id="@+id/item_datePrefix"
             android:layout_width="match_parent"
-            android:layout_height="90dp"
+            android:layout_height="120dp"
             android:layout_centerInParent="true"
-            android:paddingBottom="40dp"
-            android:layout_marginEnd="90dp"
+        android:layout_marginEnd="90dp"
             android:singleLine="false"
             android:text="Année de sortie :"
+            android:paddingTop="90dp"
             android:textAlignment="textEnd"
             android:textStyle="italic"
             tools:ignore="RtlSymmetry" />
@@ -73,13 +68,13 @@
         <TextView
             android:id="@+id/item_dateDetail"
             android:layout_width="match_parent"
-            android:layout_height="90dp"
+            android:layout_height="120dp"
             android:layout_centerInParent="true"
-            android:paddingBottom="40dp"
             android:layout_marginEnd="10dp"
+            android:layout_marginTop="50dp"
+            android:paddingTop="90dp"
             android:text="Date"
             android:textAlignment="textEnd"
-
             android:textStyle="bold|italic"
             tools:ignore="RtlSymmetry" />
 
@@ -106,17 +101,6 @@
         android:textAlignment="center"
         android:text="Detail Text" />
 
- <!--   <Button
-        android:id="@+id/bSearch"
-        android:layout_width="120dp"
-        android:layout_height="60dp"
-        android:padding="16dp"
-        android:layout_marginStart="15dp"
-        android:text="Retour"
-        android:drawableLeft="@drawable/ic_back"
-        android:textSize="15sp"/>-->
-
-
         <View
         android:layout_width="match_parent"
         android:layout_height="10dp"
@@ -139,22 +123,22 @@
         android:id="@+id/checkBoxDetail"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:layout_marginEnd="25dp"
+        android:layout_marginEnd="55dp"
         android:layout_marginBottom="65dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:text="Oui" />
 
-        <Button
-            android:id="@+id/backDetail"
-            android:layout_width="wrap_content"
+        <ImageView
+            android:id="@+id/is_read"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="10dp"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="10dp"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"
-            android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/ic_back"
-            android:text="Retour" />
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="70dp"
+            tools:srcCompat="@drawable/ic_easter_egg" />
+
 
 </RelativeLayout>
 </androidx.cardview.widget.CardView>
