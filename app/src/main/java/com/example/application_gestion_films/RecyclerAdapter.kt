@@ -60,13 +60,13 @@ class RecyclerAdapter : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
         }
 
 
-        fun TextView.design(test: Boolean){
-            if(test){
+        fun TextView.design(isRead: Boolean){
+            if(isRead){
                 setText(R.string.is_read_text)
             }
         }
-        fun ImageView.design(test :Boolean){
-            if(test){
+        fun ImageView.design(isRead :Boolean){
+            if(isRead){
                 setImageDrawable(getResources().getDrawable(R.drawable.ic_easter_egg))
             }
         }
