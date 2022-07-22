@@ -1,10 +1,12 @@
 package com.example.application_gestion_films
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import com.example.application_gestion_films.model.Film
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.firestore.FirebaseFirestore
 import com.squareup.picasso.Picasso
 
@@ -40,6 +42,13 @@ class DetailMovieActivity : AppCompatActivity() {
         itemDetailDetail.text = intent.getStringExtra("Synopsys")
         itemDateDetail.text =  intent.getStringExtra("Date")
         Picasso.get().load(intent.getStringExtra("Image")).into(itemImageDetail)
+        gestionClic()
     }
 
+    private fun gestionClic() {
+        (findViewById<View>(R.id.backDetail) as Button).setOnClickListener { v: View? ->
+            val i = Intent(this, HomeActivity::class.java)
+            startActivity(i)
+        }
+    }
 }
