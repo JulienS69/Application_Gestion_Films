@@ -47,7 +47,7 @@
             android:fontFamily="monospace"
             android:text=""
             android:textAlignment="center"
-            android:textColor="#EA1313"
+            android:textColor="#08CA13"
             android:textStyle="bold|italic" />
 
         <TextView
